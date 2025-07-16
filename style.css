@@ -1945,7 +1945,6 @@ html {
 .col-sm-5,
 .col-sm-6,
 .col-sm-7,
-.col-sm-8,
 .col-sm-9,
 .col-sm-10,
 .col-sm-11,
@@ -2339,9 +2338,9 @@ html {
   }
 
   .col-sm-8 {
-    -ms-flex: 0 0 66.666667%;
-    flex: 0 0 66.666667%;
-    max-width: 66.666667%;
+    text-align: justify;
+    padding-right: 30px;
+    padding-left: 30px;
   }
 
   .col-sm-9 {
@@ -6695,7 +6694,8 @@ h2.section-title:after {
   top: 0;
   left: 0;
   width: 100%;
-  z-index: 9999; /* prioridade máxima */
+  z-index: 9999;
+  /* prioridade máxima */
 }
 
 /*--------------------------------------------------------------
@@ -8044,17 +8044,19 @@ i.icon {
     position: absolute;
     top: 0;
     left: 0;
-    background: rgba(21, 21, 21, 0.9); /* fundo preto translúcido */
+    background: rgba(21, 21, 21, 0.9);
+    /* fundo preto translúcido */
     width: 100%;
     margin-top: 125px;
     border-top: 1px solid rgba(95, 95, 95, 0.5);
     padding: 20px 0;
-    
+
     /* animação inicial: transparente e levemente deslocado pra cima */
     opacity: 0;
     transform: translateY(-15px);
     transition: opacity 0.3s ease, transform 0.3s ease;
-    pointer-events: none; /* evita clicar quando invisível */
+    pointer-events: none;
+    /* evita clicar quando invisível */
   }
 
   /* Quando o menu abre (Bootstrap adiciona a classe .show) */
@@ -9117,7 +9119,8 @@ i.icon {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
-  gap: 30px; /* espaçamento entre os cards */
+  gap: 30px;
+  /* espaçamento entre os cards */
   padding: 20px 0;
 }
 
@@ -9125,7 +9128,7 @@ i.icon {
   background: #f9f9f9;
   padding: 25px;
   border-radius: 10px;
-  box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
   width: 30%;
   min-width: 260px;
   max-width: 320px;
@@ -9292,7 +9295,8 @@ i.icon {
     flex-wrap: wrap;
     justify-content: center;
     gap: 40px 60px;
-    overflow: hidden; /* desativa rolagem */
+    overflow: hidden;
+    /* desativa rolagem */
     scroll-snap-type: none;
     cursor: default;
     padding: 20px 0;
@@ -9408,7 +9412,8 @@ i.icon {
 
 .hero-image {
   width: 100%;
-  height: 400px; /* altura padrão para desktop */
+  height: 400px;
+  /* altura padrão para desktop */
   background-image: url('images/subscribebg.jpg');
   background-position: center;
   background-repeat: no-repeat;
@@ -9418,13 +9423,15 @@ i.icon {
 /* Para telas menores que 576px (celular) */
 @media (max-width: 575px) {
   .hero-image {
-    height: 150px; /* altura menor para celular, mais parecida com um header */
+    height: 150px;
+    /* altura menor para celular, mais parecida com um header */
   }
 }
 
 .hero-image-about {
   width: 100%;
-  height: 400px; /* altura padrão para desktop */
+  height: 400px;
+  /* altura padrão para desktop */
   background-image: url('images/blogbanner.jpg');
   background-position: center;
   background-repeat: no-repeat;
@@ -9434,7 +9441,8 @@ i.icon {
 /* Para telas menores que 576px (celular) */
 @media (max-width: 575px) {
   .hero-image {
-    height: 150px; /* altura menor para celular, mais parecida com um header */
+    height: 150px;
+    /* altura menor para celular, mais parecida com um header */
   }
 }
 
@@ -9461,6 +9469,16 @@ i.icon {
   bottom: 0;
   height: 594px;
 }
+
+.css-team-info{
+  margin-bottom: 50px;
+}
+
+.underline-red {
+  text-decoration: underline;
+  text-decoration-color: red;
+}
+
 
 @media only screen and (max-width: 1600px) {
   .our-founder img.singleImg {
@@ -9649,9 +9667,20 @@ i.icon {
   transition: transform 0.3s ease;
 }
 
+
 .whatsapp-float:hover {
   transform: scale(1.1);
   animation-play-state: paused;
+}
+
+#whatsapp-close {
+  color: #555;
+  font-weight: bold;
+  transition: color 0.3s ease;
+}
+
+#whatsapp-close:hover {
+  color: red;
 }
 
 
@@ -9732,19 +9761,24 @@ i.icon {
     margin-bottom: 10px;
   }
 }
+.row {
+  display: flex;
+  flex-wrap: nowrap; /* impede que os elementos quebrem linha */
+  align-items: flex-start;
+}
 
-  .central-mobile {
-    display: block;
-    margin: 0 auto 30px auto !important;
-    max-width: 100%;
-    height: auto;
-  }
+.central-mobile {
+  display: block;
+  margin: 0 auto 30px auto !important;
+  max-width: 100%;
+  height: auto;
+}
 
 
 .img-responsive.about {
-    margin-left: auto !important;
-    margin-right: auto !important;
-  }
+  margin-left: auto !important;
+  margin-right: auto !important;
+}
 
 .abt-slider-intro {
   padding: 0 10px;
@@ -9891,15 +9925,19 @@ img {
 /* Tela de loading fullscreen */
 #preloader {
   position: fixed;
-  top: 0; left: 0;
-  width: 100vw; height: 100vh;
-  background-color: #000; /* fundo preto para contraste */
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: #000;
+  /* fundo preto para contraste */
   display: flex;
   justify-content: center;
   align-items: center;
   flex-direction: column;
   z-index: 99999;
-  color: #e53935; /* vermelho da academia */
+  color: #e53935;
+  /* vermelho da academia */
   font-family: 'Oswald', sans-serif;
   font-weight: 700;
   transition: opacity 0.8s ease;
@@ -9926,7 +9964,8 @@ img {
 /* Círculo animado ao redor do logo */
 .loader-circle {
   position: absolute;
-  top: 0; left: 0;
+  top: 0;
+  left: 0;
   width: 140px;
   height: 140px;
   border: 6px solid transparent;
@@ -9938,11 +9977,22 @@ img {
 
 /* Pulsação do logo */
 @keyframes pulse {
-  0%, 100% { transform: scale(1); opacity: 1; }
-  50% { transform: scale(1.05); opacity: 0.7; }
+
+  0%,
+  100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+
+  50% {
+    transform: scale(1.05);
+    opacity: 0.7;
+  }
 }
 
 /* Animação de rotação do círculo */
 @keyframes spin {
-  100% { transform: rotate(360deg); }
+  100% {
+    transform: rotate(360deg);
+  }
 }

@@ -147,6 +147,47 @@ if ("undefined" == typeof jQuery) throw new Error("Bootstrap's JavaScript requir
 
 })(jQuery);
 
+document.addEventListener("DOMContentLoaded", function () {
+  const sections = document.querySelectorAll("section[id]");
+  const navLinks = document.querySelectorAll(".nav-item");
+
+  const observer = new IntersectionObserver(
+    entries => {
+      entries.forEach(entry => {
+        const id = entry.target.id;
+        const navItem = document.querySelector(`.nav-item a[href*="#${id}"]`)?.parentElement;
+
+        if (entry.isIntersecting) {
+          navLinks.forEach(link => link.classList.remove("active"));
+          navItem?.classList.add("active");
+        }
+      });
+    },
+    {
+      threshold: 0.6 // Altera o ponto de visibilidade (60% visível)
+    }
+  );
+
+  sections.forEach(section => observer.observe(section));
+});
+
+
+document.addEventListener("DOMContentLoaded", function () {
+  const path = window.location.pathname;
+  const hash = window.location.hash;
+
+  const isHomePage = path.endsWith("index.html") || path === "/" || path === "" || path.endsWith("/") || hash === "" || hash === "#home";
+
+  if (isHomePage) {
+    const homeLink = document.querySelector('#home-link');
+    if (homeLink) {
+      homeLink.classList.add("active");
+    }
+  }
+});
+
+
+
 // Seleciona elementos do DOM
 
 
@@ -223,11 +264,17 @@ toggleBtn.addEventListener('click', function (e) {
   popup.style.display = popup.style.display === 'block' ? 'none' : 'block';
 });
 
+document.getElementById('whatsapp-close').addEventListener('click', function () {
+  document.getElementById('whatsapp-popup').style.display = 'none';
+});
+
 document.addEventListener('click', function (e) {
   if (!popup.contains(e.target) && !toggleBtn.contains(e.target)) {
     popup.style.display = 'none';
   }
 });
+
+
 
 document.addEventListener("DOMContentLoaded", () => {
   const carousel = document.getElementById('partners-carousel');
