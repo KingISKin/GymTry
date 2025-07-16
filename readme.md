@@ -1,7 +1,6 @@
 # 🏋️ AcademiaFit — Site Institucional Moderno
 
-![Banner](images/banner-github.png) <!-- Opcional: imagem de topo se quiser -->
-
+![Banner](images/banner-github.png) 
 Um site completo e moderno desenvolvido para academias, studios e centros de treinamento. Projetado com foco em **experiência do usuário**, **responsividade** e **identidade visual forte**, o projeto entrega uma navegação intuitiva, visual impactante e recursos úteis para captar alunos e apresentar serviços.
 
 ## 💻 Tecnologias Utilizadas
