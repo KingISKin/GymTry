@@ -776,27 +776,40 @@
 			<i class="fab fa-whatsapp"></i>
 		</a>
 
-		<div id="whatsapp-popup" class="whatsapp-popup" style="margin-right: 20px; margin-bottom: 5px; display: none;">
-			<!-- Botão "X" para fechar -->
+		<div id="whatsapp-popup" class="whatsapp-popup">
+			<!-- Portas animadas -->
+			<div class="door left-door"></div>
+			<div class="door right-door"></div>
 
+			<!-- Conteúdo da popup -->
+			<button id="whatsapp-close" style="
+    position: absolute;
+    top: 5px;
+    right: 5px;
+    background: red;
+    border: none;
+    color: white;
+    font-size: 22px;
+    width: 28px;
+    height: 28px;
+    border-radius: 50%;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  ">&times;</button>
 
-			<h3 style="text-align: left;">Whatsapp do Atendente </h3>
-
-			<button id="whatsapp-close" style="position: absolute; top: 1px; right: 1px; background: red; border: none; 
-         color: white; font-size: 18px; cursor: pointer; width: 28px; height: 28px; 
-         border-bottom-left-radius: 50%; 
-         display: flex; align-items: center; justify-content: center; padding: 0;">
-				&times;
-			</button>
-
-
+			<h3 style="margin-top: 30px;">Whatsapp do Atendente</h3>
 
 			<p class="subtitle">Quero saber mais sobre os Planos!</p>
+
 			<a href="https://wa.me/5599999999999?text=Ol%C3%A1!!%20Gostaria%20de%20saber%20mais%20sobre%20a%20academia!!"
-				target="_blank" class="popup-button">
+				target="_blank" class="popup-button"
+				style="margin-top: 10px; display: inline-flex; align-items: center; gap: 8px; background-color: #25D366; color: white; padding: 10px 16px; border-radius: 30px; font-weight: 600; font-size: 14px; text-decoration: none; box-shadow: 0 4px 8px rgba(37, 211, 102, 0.3);">
 				<i class="fas fa-comment-dots"></i> Enviar mensagem no WhatsApp
 			</a>
 		</div>
+
 	</div>
 
 	<div id="preloader">

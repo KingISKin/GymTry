@@ -423,3 +423,29 @@ $(document).ready(function() {
 });
 
 
+(() => {
+  const toggleBtn = document.getElementById('whatsapp-toggle');
+  const popup = document.getElementById('whatsapp-popup');
+  const closeBtn = document.getElementById('whatsapp-close');
+
+  if (!toggleBtn || !popup || !closeBtn) {
+    console.warn('Elementos do WhatsApp não encontrados');
+    return;
+  }
+
+  toggleBtn.addEventListener('click', (e) => {
+    e.preventDefault();
+    popup.classList.toggle('open');
+  });
+
+  closeBtn.addEventListener('click', (e) => {
+    e.preventDefault();
+    popup.classList.remove('open');
+  });
+})();
+
+
+
+
+
+
