@@ -56,6 +56,7 @@ html {
   font-family: sans-serif;
   -ms-text-size-adjust: 100%;
   -webkit-text-size-adjust: 100%;
+  scroll-behavior: smooth;
 }
 
 body {
@@ -6665,7 +6666,7 @@ tfoot {
 --------------------------------------------------------------*/
 .section-header {
   width: 100%;
-  max-width: 700px;
+  max-width: 500px;
   margin: auto;
 }
 
@@ -8070,6 +8071,65 @@ i.icon {
 /* ---- Dropdown
 -----------------------------------------*/
 
+.navbar-toggler {
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+  width: 40px;
+  height: 30px;
+  position: relative;
+  z-index: 1050; /* acima do menu */
+}
+
+.menu-icon {
+  display: inline-block;
+  position: relative;
+  width: 30px;
+  height: 24px;
+}
+
+.menu-icon .bar {
+  display: block;
+  position: absolute;
+  height: 3px;
+  width: 100%;
+  background-color: #d4000d; /* cor vermelha do link */
+  border-radius: 3px;
+  opacity: 1;
+  left: 0;
+  transition: all 0.4s ease;
+}
+
+/* Posiciona as barras */
+.menu-icon .bar:nth-child(1) {
+  top: 0;
+}
+
+.menu-icon .bar:nth-child(2) {
+  top: 10px;
+}
+
+.menu-icon .bar:nth-child(3) {
+  top: 20px;
+}
+
+/* Quando o botão está ativo (classe 'active'), anima para X */
+.navbar-toggler.active .bar:nth-child(1) {
+  transform: rotate(45deg);
+  top: 10px;
+}
+
+.navbar-toggler.active .bar:nth-child(2) {
+  opacity: 0;
+}
+
+.navbar-toggler.active .bar:nth-child(3) {
+  transform: rotate(-45deg);
+  top: 10px;
+}
+
+
 /* Style the dropdown button */
 .dropbtn {
   display: inline-block;
@@ -8628,11 +8688,11 @@ i.icon {
   color: #222;
 }
 
-/* MOBILE (TORRE: ícone + texto empilhados) */
 @media (max-width: 768px) {
   .achievement-box {
     flex: 1 1 100%;
     max-width: 100%;
+    margin: 0 auto; 
   }
 
   .achievements-row {
@@ -8652,6 +8712,18 @@ i.icon {
 .our-trainers .text-content {
   position: relative;
 }
+
+.teamImg {
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  border-radius: 8px;
+}
+
+.col-md-3:hover .teamImg {
+  transform: scale(1.05);
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+}
+
+
 
 /* -- Membership Section -------------------------------------------------------------- */
 .membership {
@@ -9155,6 +9227,35 @@ i.icon {
   margin-bottom: 15px;
 }
 
+.testimonial-box {
+  background: #fff; /* caso queira um fundo branco */
+  border-radius: 10px;
+  padding: 20px;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  cursor: pointer;
+  will-change: transform, box-shadow;
+  user-select: none; /* impede seleção ao clicar */
+}
+
+.testimonial-box:hover,
+.testimonial-box:focus {
+  transform: scale(1.05);
+  box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+  z-index: 10;
+  outline: none;
+}
+
+.testimonial-box:active {
+  transform: scale(0.98);
+  box-shadow: 0 5px 10px rgba(0,0,0,0.1);
+  transition: transform 0.1s ease;
+}
+
+.testimonial-box:focus-visible {
+  outline: 2px solid #007bff;
+}
+
 /* Nome do autor */
 .testimonial-author .name {
   font-weight: bold;
@@ -9351,6 +9452,71 @@ i.icon {
   padding: 11px;
   border: none;
 }
+
+.sgalleryImg {
+  cursor: pointer;
+  border-radius: 8px;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  max-width: 100px; /* ajuste o tamanho das miniaturas */
+  height: auto;
+  display: block;
+}
+
+.sgalleryImg:hover,
+.sgalleryImg:focus {
+  transform: scale(1.1);
+  box-shadow: 0 8px 20px rgba(0,0,0,0.3);
+  outline: none;
+}
+
+/* Modal */
+.modal-gallery {
+  display: none; /* oculto inicialmente */
+  position: fixed;
+  z-index: 10000;
+  left: 0; top: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(0,0,0,0.8);
+  justify-content: center;
+  align-items: center;
+}
+
+.modal-gallery.active {
+  display: flex;
+}
+
+.modal-gallery img {
+  max-width: 90%;
+  max-height: 90%;
+  border-radius: 8px;
+  box-shadow: 0 8px 30px rgba(0,0,0,0.7);
+  user-select: none;
+}
+
+.modal-close-btn {
+  position: fixed;
+  top: 20px;
+  right: 30px;
+  font-size: 32px;
+  color: white;
+  background: rgba(0,0,0,0.4);
+  border: none;
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  cursor: pointer;
+  transition: background 0.3s ease;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.modal-close-btn:hover {
+  color: #e74c3c; 
+  border-radius: 50%; 
+}
+
 
 @media only screen and (max-width: 1600px) {
   .newsletter-button input[type="text"] {
@@ -9645,6 +9811,23 @@ i.icon {
   }
 }
 
+.iconbox {
+  cursor: pointer; /* Mãozinha */
+  transition: transform 0.3s ease, box-shadow 0.3s ease; /* Suavidade */
+  border-radius: 12px; /* Levemente arredondado (opcional) */
+}
+
+.iconbox:hover {
+  transform: scale(1.05); /* Cresce levemente */
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15); /* Sombra suave */
+}
+
+.iconbox:active {
+  transform: scale(1.05);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+}
+
+
 
 /* Botão flutuante do WhatsApp */
 .whatsapp-float {
@@ -9667,11 +9850,11 @@ i.icon {
   transition: transform 0.3s ease;
 }
 
-
 .whatsapp-float:hover {
   transform: scale(1.1);
   animation-play-state: paused;
 }
+
 
 #whatsapp-close {
   color: #555;
@@ -9679,8 +9862,9 @@ i.icon {
   transition: color 0.3s ease;
 }
 
-#whatsapp-close:hover {
-  color: red;
+
+.popup-button i {
+  font-size: 20px;
 }
 
 

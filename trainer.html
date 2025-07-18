@@ -38,15 +38,24 @@
 						<div class="nav-brand">
 							<a href="index.html"><img src="images/logo.png"></a>
 						</div>
-						<button class="navbar-toggler collapsed" type="button" data-toggle="collapse"
+
+						<!-- Botão toggle do menu com atributos Bootstrap e custom -->
+						<button class="navbar-toggler" type="button" data-toggle="collapse"
 							data-target="#slide-navbar-collapse" aria-controls="slide-navbar-collapse"
 							aria-expanded="false" aria-label="Toggle navigation">
-							<span class="navbar-toggler-icon"><i class="icon icon-navicon"></i></span>
+							<span class="menu-icon">
+								<span class="bar"></span>
+								<span class="bar"></span>
+								<span class="bar"></span>
+							</span>
 						</button>
+
 						<div class="navbar-collapse collapse text-hover" id="slide-navbar-collapse">
 							<ul class="navbar-nav list-inline light text-uppercase">
-								<li class="nav-item"><a href="index.html" class="navlink">home</a></li>
-								<li class="nav-item">
+								<li class="nav-item" id="home-link">
+									<a href="index.html#billboard" class="navlink">Home</a>
+								</li>
+								<li class="nav-item" id="membership-link">
 									<a href="index.html#membership" class="navlink">Nossos Planos</a>
 								</li>
 								<li class="nav-item"><a href="about.html">Sobre nós</a></li>
@@ -56,9 +65,8 @@
 										ENTRE EM CONTATO
 									</a>
 								</li>
-
 							</ul>
-						</div><!--navbar-collapse-->
+						</div><!-- navbar-collapse -->
 					</nav>
 				</div>
 			</div>
@@ -110,9 +118,9 @@
 									alt="Imagem da equipe">
 							</div>
 							<h3 class="css-team-heading">
-									<span class="underline-red">Rodrigo Lima</span><br>
-									<small>Personal Trainer</small>
-								</h3>
+								<span class="underline-red">Rodrigo Lima</span><br>
+								<small>Personal Trainer</small>
+							</h3>
 						</figure>
 					</div>
 
@@ -124,9 +132,9 @@
 									alt="Imagem da equipe">
 							</div>
 							<h3 class="css-team-heading">
-									<span class="underline-red">Juliana Martins</span><br>
-									<small>Nutricionista Esportiva</small>
-								</h3>
+								<span class="underline-red">Juliana Martins</span><br>
+								<small>Nutricionista Esportiva</small>
+							</h3>
 						</figure>
 					</div>
 
@@ -138,9 +146,9 @@
 									alt="Imagem da equipe">
 							</div>
 							<h3 class="css-team-heading">
-									<span class="underline-red">André Silva</span><br>
-									<small>Instrutor de Musculação</small>
-								</h3>
+								<span class="underline-red">André Silva</span><br>
+								<small>Instrutor de Musculação</small>
+							</h3>
 						</figure>
 					</div>
 
@@ -152,9 +160,9 @@
 									alt="Imagem da equipe">
 							</div>
 							<h3 class="css-team-heading">
-									<span class="underline-red">Larissa Campos</span><br>
-									<small>Recepcionista</small>
-								</h3>
+								<span class="underline-red">Larissa Campos</span><br>
+								<small>Recepcionista</small>
+							</h3>
 						</figure>
 					</div>
 				</div><!-- /.row -->
@@ -327,6 +335,8 @@
 				&times;
 			</button>
 
+
+
 			<p class="subtitle">Quero saber mais sobre os Planos!</p>
 			<a href="https://wa.me/5599999999999?text=Ol%C3%A1!!%20Gostaria%20de%20saber%20mais%20sobre%20a%20academia!!"
 				target="_blank" class="popup-button">
@@ -350,6 +360,27 @@
 				preloader.style.display = 'none';
 			}, 800);
 		});
+
+		const toggleBtn = document.getElementById('whatsapp-toggle');
+		const popup = document.getElementById('whatsapp-popup');
+		const closeBtn = document.getElementById('whatsapp-close');
+
+		if (toggleBtn && popup && closeBtn) {
+			toggleBtn.addEventListener('click', function (e) {
+				e.preventDefault();
+				popup.style.display = popup.style.display === 'block' ? 'none' : 'block';
+			});
+
+			closeBtn.addEventListener('click', function () {
+				popup.style.display = 'none';
+			});
+
+			document.addEventListener('click', function (e) {
+				if (!popup.contains(e.target) && !toggleBtn.contains(e.target)) {
+					popup.style.display = 'none';
+				}
+			});
+		}
 	</script>
 
 	<script src="js/jquery-1.11.0.min.js"></script>

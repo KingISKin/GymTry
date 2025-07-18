@@ -37,11 +37,18 @@
 						<div class="nav-brand">
 							<a href="index.html"><img src="images/logo.png"></a>
 						</div>
-						<button class="navbar-toggler collapsed" type="button" data-toggle="collapse"
+
+						<!-- Botão toggle do menu com atributos Bootstrap e custom -->
+						<button class="navbar-toggler" type="button" data-toggle="collapse"
 							data-target="#slide-navbar-collapse" aria-controls="slide-navbar-collapse"
 							aria-expanded="false" aria-label="Toggle navigation">
-							<span class="navbar-toggler-icon"><i class="icon icon-navicon"></i></span>
+							<span class="menu-icon">
+								<span class="bar"></span>
+								<span class="bar"></span>
+								<span class="bar"></span>
+							</span>
 						</button>
+
 						<div class="navbar-collapse collapse text-hover" id="slide-navbar-collapse">
 							<ul class="navbar-nav list-inline light text-uppercase">
 								<li class="nav-item" id="home-link">
@@ -57,13 +64,13 @@
 										ENTRE EM CONTATO
 									</a>
 								</li>
-
 							</ul>
-						</div><!--navbar-collapse-->
+						</div><!-- navbar-collapse -->
 					</nav>
 				</div>
 			</div>
 		</header>
+
 		<section id="billboard">
 
 			<!-- Botões em forma de sombra lateral -->
@@ -253,7 +260,7 @@
 					<!-- Conquista 1 -->
 					<div class="achievement-box">
 						<div class="tracker">
-							<span class="number">19</span>
+							<span class="number" data-target="19">0</span>
 						</div>
 						<div class="iconbox-content text-center">
 							<i class="icon icon-suitcase"></i>
@@ -264,7 +271,7 @@
 					<!-- Conquista 2 -->
 					<div class="achievement-box">
 						<div class="tracker">
-							<span class="number">879</span>
+							<span class="number" data-target="879">0</span>
 						</div>
 						<div class="iconbox-content text-center">
 							<i class="icon icon-clock2"></i>
@@ -275,7 +282,7 @@
 					<!-- Conquista 3 -->
 					<div class="achievement-box">
 						<div class="tracker">
-							<span class="number">150</span>
+							<span class="number" data-target="150">0</span>
 						</div>
 						<div class="iconbox-content text-center">
 							<i class="icon icon-users"></i>
@@ -286,11 +293,11 @@
 					<!-- Conquista 4 -->
 					<div class="achievement-box">
 						<div class="tracker">
-							<span class="number">7</span>
+							<span class="number" data-target="7">0</span>
 						</div>
 						<div class="iconbox-content text-center">
 							<i class="icon icon-trophy"></i>
-							<h4>Prêmios Recebidos</h4>
+							<h4>Prêmios Recebidos (até hoje)</h4>
 						</div>
 					</div>
 				</div> <!-- /.row -->
@@ -328,8 +335,9 @@
 						</figure>
 						<div class="text-content text-center mt-3 ">
 							<h4><a href="#">Rosy Rivera</a></h4>
-							<span class="designation colored-grey">Coach de Treinamento Funcional</span>
-							<p>Rosy é referência em treinos funcionais e condicionamento físico para todas as idades.
+							<span class="designation colored-grey">Coach de Funcional</span>
+							<p>Rosy é referência em treinos funcionais e condicionamento físico com foco em
+								emagrecimento para todos os públicos e idades.
 							</p>
 							<div class="dark social-links">
 								<ul class="list-unstyled d-flex">
@@ -346,9 +354,9 @@
 							<a href="#"><img src="images/matt.jpg" alt="post" class="teamImg"></a>
 						</figure>
 						<div class="text-content text-center mt-3 mb-3">
-							<h4><a href="#">Matt Stonie</a></h4>
+							<h4><a href="#">Lucas Stonie</a></h4>
 							<span class="designation colored-grey">Especialista em Condicionamento</span>
-							<p>Matt desenvolve treinos de alta intensidade focados em resistência, potência e
+							<p>Lucas desenvolve treinos de alta intensidade focados em resistência, potência e
 								transformação corporal.</p>
 							<div class="dark social-links">
 								<ul class="list-unstyled d-flex">
@@ -367,7 +375,8 @@
 						<div class="text-content text-center mt-3 mb-3">
 							<h4><a href="#">Sofia Lauren</a></h4>
 							<span class="designation colored-grey">Personal Trainer</span>
-							<p>Sofia foca no bem-estar feminino, com treinos personalizados que equilibram estética e
+							<p>Sofia foca no bem-estar feminino, com treinos personalizados e capacitados que equilibram
+								estética e
 								saúde.</p>
 							<div class="dark social-links">
 								<ul class="list-unstyled d-flex">
@@ -462,7 +471,7 @@
 											<li><i class="icon icon-check"></i>Dicas de saúde e bem-estar</li>
 											<li><i class="icon icon-check"></i>Acesso de segunda a sexta</li>
 											<li><i class="icon icon-check"></i>Acesso total ao espaço</li>
-											<li><i class="icon icon-check"></i>Serviços adicionais inclusos</li>
+											<li><i class="icon icon-check"></i>Serviços adicionais</li>
 										</ul>
 									</div><!-- inclusion -->
 									<div class="meta-price">
@@ -673,44 +682,49 @@
 							<div class="row">
 								<h4 class="widget-title mb-3">galeria</h4>
 								<div class="widget-content">
-									<ul class="d-flex d-flex-flow">
+									<ul class="d-flex d-flex-flow"
+										style="flex-wrap: wrap; gap: 10px; padding-left: 0; list-style: none;">
 										<li class="mb-2 mr-2">
-											<a href="#"><img src="images/david.jpg" alt="academia"
-													class="sgalleryImg"></a>
+											<img src="images/david.jpg" alt="academia" class="sgalleryImg" tabindex="0">
 										</li>
 										<li class="mb-2 mr-2">
-											<a href="#"><img src="images/rosy.jpg" alt="academia"
-													class="sgalleryImg"></a>
+											<img src="images/rosy.jpg" alt="academia" class="sgalleryImg" tabindex="0">
 										</li>
 										<li class="mb-2">
-											<a href="#"><img src="images/sofia.jpg" alt="academia"
-													class="sgalleryImg"></a>
+											<img src="images/sofia.jpg" alt="academia" class="sgalleryImg" tabindex="0">
 										</li>
 										<li class="mb-2 mr-2">
-											<a href="#"><img src="images/matt.jpg" alt="academia"
-													class="sgalleryImg"></a>
+											<img src="images/matt.jpg" alt="academia" class="sgalleryImg" tabindex="0">
 										</li>
 										<li class="mb-2 mr-2">
-											<a href="#"><img src="images/postitem2.jpg" alt="academia"
-													class="sgalleryImg"></a>
+											<img src="images/postitem2.jpg" alt="academia" class="sgalleryImg"
+												tabindex="0">
 										</li>
 										<li class="mb-2">
-											<a href="#"><img src="images/postitem3.jpg" alt="academia"
-													class="sgalleryImg"></a>
+											<img src="images/postitem3.jpg" alt="academia" class="sgalleryImg"
+												tabindex="0">
 										</li>
 										<li class="mb-2 mr-2">
-											<a href="#"><img src="images/postitem4.jpg" alt="academia"
-													class="sgalleryImg"></a>
+											<img src="images/postitem4.jpg" alt="academia" class="sgalleryImg"
+												tabindex="0">
 										</li>
 										<li class="mb-2 mr-2">
-											<a href="#"><img src="images/postitem1.jpg" alt="academia"
-													class="sgalleryImg"></a>
+											<img src="images/postitem1.jpg" alt="academia" class="sgalleryImg"
+												tabindex="0">
 										</li>
 									</ul>
-
 								</div>
 							</div>
 						</div>
+
+						<!-- Modal (adicione logo após o div acima, no corpo da página) -->
+						<div class="modal-gallery" id="modalGallery" role="dialog" aria-modal="true"
+							aria-labelledby="modalImageAlt">
+							<button class="modal-close-btn" id="modalCloseBtn"
+								aria-label="Fechar modal">&times;</button>
+							<img src="" alt="" id="modalImage">
+						</div>
+
 
 						<div class="col-md-3 widget-newsletter" style="text-align: center;">
 							<div class="row">
@@ -756,8 +770,6 @@
 				</div>
 			</div>
 		</div>
-
-
 	</div><!--body-wrapper-->
 	<div class="whatsapp-message" style="margin-right: 20px;">
 		<a href="#" id="whatsapp-toggle" class="whatsapp-float" style="margin-right: 20px; margin-bottom: 5px;">

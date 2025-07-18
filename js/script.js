@@ -188,9 +188,6 @@ document.addEventListener("DOMContentLoaded", function () {
 
 
 
-// Seleciona elementos do DOM
-
-
 const genderSelect = document.querySelector('select[name="gender"]');
 const heightInput = document.querySelector('input[name="height"]');
 const weightInput = document.querySelector('input[name="weight"]');
@@ -199,40 +196,71 @@ const resultInput = document.querySelector('input[name="result"]');
 const calculateBtn = document.getElementById('btn-calculate');
 const clearBtn = document.getElementById('btn-clear');
 
-// Função para calcular IMC
+// Função para formatar número com duas casas decimais
+function formatNumber(num) {
+  return parseFloat(num).toFixed(2);
+}
+
+// Função para formatar e corrigir altura
+function formatHeight(value) {
+  value = value.replace(',', '.');
+  let heightNum = parseFloat(value);
+
+  if (isNaN(heightNum) || heightNum <= 0) {
+    return null;
+  }
+
+  if (heightNum > 3) {
+    heightNum = heightNum / 100;  // Converte cm para metros
+  }
+
+  return formatNumber(heightNum);
+}
+
+// Função para calcular IMC com base no gênero
 function calculateBMI() {
-  const height = parseFloat(heightInput.value.replace(',', '.'));
+  const heightFormatted = formatHeight(heightInput.value);
   const weight = parseFloat(weightInput.value.replace(',', '.'));
 
-  if (!height || !weight || height <= 0 || weight <= 0) {
+  if (!heightFormatted || !weight || weight <= 0) {
     alert('Por favor, insira valores válidos de altura e peso.');
     return;
   }
 
-  // Cálculo IMC = peso / (altura * altura)
+  const height = parseFloat(heightFormatted); // número com 2 casas decimais
   const bmi = weight / (height * height);
-  const bmiRounded = bmi.toFixed(2);
+  const bmiRounded = formatNumber(bmi);
 
-  // Classificação IMC
+  const gender = genderSelect.value;
   let classification = '';
 
-  if (bmi < 18) {
-    classification = 'Abaixo do peso';
-  } else if (bmi >= 18 && bmi <= 25) {
-    classification = 'Peso Normal';
-  } else if (bmi > 25 && bmi <= 30) {
-    classification = 'Sobrepeso';
-  } else if (bmi > 30 && bmi <= 40) {
-    classification = 'Obesidade';
+  if (gender === 'male') {
+    if (bmi < 20.7) classification = 'Abaixo do peso';
+    else if (bmi <= 26.4) classification = 'Peso normal';
+    else if (bmi <= 27.8) classification = 'Sobrepeso';
+    else if (bmi <= 31.1) classification = 'Obeso';
+    else if (bmi <= 45.4) classification = 'Obesidade M.';
+    else classification = 'Obesidade Mórbida';
+  } else if (gender === 'female') {
+    if (bmi < 19.1) classification = 'Abaixo do peso';
+    else if (bmi <= 25.8) classification = 'Peso normal';
+    else if (bmi <= 27.3) classification = 'Sobrepeso';
+    else if (bmi <= 32.3) classification = 'Obesa';
+    else if (bmi <= 44.8) classification = 'Obesidade M.';
+    else classification = 'Obesidade Mórbida';
   } else {
-    classification = 'Obesidade Mórbida';
+    classification = 'Gênero não selecionado';
   }
 
-  // Mostra resultado no input
+  // Atualiza os inputs com valores formatados
+  heightInput.value = heightFormatted;
+  weightInput.value = formatNumber(weight);
+
+  // Exibe resultado formatado
   resultInput.value = `${bmiRounded} - ${classification}`;
 }
 
-// Função para limpar inputs
+// Função para limpar os campos
 function clearFields() {
   heightInput.value = '';
   weightInput.value = '';
@@ -250,29 +278,30 @@ clearBtn.addEventListener('click', function (e) {
   clearFields();
 });
 
-$('.slider').slick({
-  arrows: true,
-  prevArrow: $('.prev'),
-  nextArrow: $('.next')
-});
+
+
 
 const toggleBtn = document.getElementById('whatsapp-toggle');
 const popup = document.getElementById('whatsapp-popup');
+const closeBtn = document.getElementById('whatsapp-close');
 
-toggleBtn.addEventListener('click', function (e) {
-  e.preventDefault();
-  popup.style.display = popup.style.display === 'block' ? 'none' : 'block';
-});
+if (toggleBtn && popup && closeBtn) {
+  toggleBtn.addEventListener('click', function (e) {
+    e.preventDefault();
+    popup.style.display = popup.style.display === 'block' ? 'none' : 'block';
+  });
 
-document.getElementById('whatsapp-close').addEventListener('click', function () {
-  document.getElementById('whatsapp-popup').style.display = 'none';
-});
-
-document.addEventListener('click', function (e) {
-  if (!popup.contains(e.target) && !toggleBtn.contains(e.target)) {
+  closeBtn.addEventListener('click', function () {
     popup.style.display = 'none';
-  }
-});
+  });
+
+  document.addEventListener('click', function (e) {
+    if (!popup.contains(e.target) && !toggleBtn.contains(e.target)) {
+      popup.style.display = 'none';
+    }
+  });
+}
+
 
 
 
@@ -319,5 +348,78 @@ window.addEventListener('load', () => {
   }, 800);
 });
 
+
+function animateCounters() {
+    const counters = document.querySelectorAll('.number');
+    counters.forEach(counter => {
+      const target = +counter.getAttribute('data-target');
+      const duration = 2000;
+      let start = 0;
+      const step = () => {
+        const increment = target / (duration / 16);
+        start += increment;
+        if (start < target) {
+          counter.innerText = Math.ceil(start);
+          requestAnimationFrame(step);
+        } else {
+          counter.innerText = target >= 100 ? `${target}` : `${target}`;
+        }
+      };
+      step();
+    });
+  }
+
+  const achievementsSection = document.querySelector('.our-achievements');
+  let animated = false;
+
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting && !animated) {
+        animateCounters();
+        animated = true;
+      }
+    });
+  }, {
+    threshold: 0.3
+  });
+
+  observer.observe(achievementsSection);
+
+
+  const modalGallery = document.getElementById('modalGallery');
+const modalImage = document.getElementById('modalImage');
+const modalCloseBtn = document.getElementById('modalCloseBtn');
+
+document.querySelectorAll('.sgalleryImg').forEach(img => {
+  img.addEventListener('click', e => {
+    e.preventDefault();
+    modalImage.src = img.src;
+    modalGallery.classList.add('active');
+  });
+});
+
+modalCloseBtn.addEventListener('click', () => {
+  modalGallery.classList.remove('active');
+});
+
+// Fechar modal ao clicar fora da imagem
+modalGallery.addEventListener('click', e => {
+  if (e.target === modalGallery) {
+    modalGallery.classList.remove('active');
+  }
+});
+
+// Opcional: fechar modal com ESC
+document.addEventListener('keydown', e => {
+  if (e.key === 'Escape' && modalGallery.classList.contains('active')) {
+    modalGallery.classList.remove('active');
+  }
+});
+
+$(document).ready(function() {
+  $('.navbar-toggler').on('click', function() {
+    $(this).toggleClass('active');
+  });
+});
 
 
